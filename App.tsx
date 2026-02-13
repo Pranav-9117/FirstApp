@@ -1,118 +1,114 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import React from "react";
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
   View,
-} from 'react-native';
+  Text,
+  StyleSheet,
+  Image,
+  Pressable,
+  SafeAreaView,
+} from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import Facebook from "./assets/facebook.svg";
+import Instagram from "./assets/instagram.svg";
+import Spotify from "./assets/spotify.svg";
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+export default function ProfileScreen() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+    <SafeAreaView style={styles.container}>
+      <View style={styles.card}>
+        <Image
+          source={{
+            uri: "https://th.bing.com/th/id/OIP.BfhWquOWuA8ZFjTHqoXdHQHaEj?w=275&h=180&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3",
+          }}
+          style={styles.avatar}
+        />
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+        <Text style={styles.name}>Alan Walker</Text>
+        <Text style={styles.subtitle}>Mindfulness and wellbeing</Text>
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Last Album</Text>
+        </Pressable>
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Blog</Text>
+        </Pressable>
+
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Website</Text>
+        </Pressable>
+
+        <Pressable style={styles.button}>
+          <Text style={styles.buttonText}>Spotify</Text>
+        </Pressable>
+
+        <View style={styles.socialRow}>
+          <Facebook width={35} height={35} fill="#fff" />
+          <Instagram width={35} height={35} fill="#fff" />
+          <Spotify width={35} height={35} fill="#1DB954" />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    backgroundColor: "#000",
+    justifyContent: "center",
+    alignItems: "center",
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+
+  card: {
+    width: "85%",
+    borderRadius: 30,
+    paddingVertical: 40,
+    paddingHorizontal: 20,
+    alignItems: "center",
+    backgroundColor: "#111",
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+
+  avatar: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    marginBottom: 15,
   },
-  highlight: {
-    fontWeight: '700',
+
+  name: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+  },
+
+  subtitle: {
+    fontSize: 14,
+    color: "#ccc",
+    marginBottom: 25,
+  },
+
+  button: {
+    width: "100%",
+    backgroundColor: "#222",
+    paddingVertical: 15,
+    borderRadius: 25,
+    marginVertical: 8,
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#444",
+  },
+
+  buttonText: {
+    fontSize: 16,
+    fontWeight: "500",
+    color: "white",
+  },
+
+  socialRow: {
+    flexDirection: "row",
+    marginTop: 25,
+    width: "60%",
+    justifyContent: "space-between",
   },
 });
-
-export default App;
